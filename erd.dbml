@@ -1,0 +1,34 @@
+Table customers {
+    id int [pk]
+    address varchar
+    phoneNumber varchar
+    userId int
+}
+
+Table users {
+    id int [pk]
+    fullName varchar
+    email varchar
+    isStaf boolean
+}
+
+Table employees {
+    id int [pk]
+    specialty varchar
+    rate float
+    userId int
+}
+
+Table serviceTickets {
+    id int [pk]
+    userId int
+    description varchar
+    emergency boolean
+    dateCompleted date
+}
+
+Table employeeTickets {
+    id int [pk]
+    employeeId int
+    serviceTicketId int
+}
