@@ -9,7 +9,7 @@ Table users {
     id int [pk]
     fullName varchar
     email varchar
-    isStaf boolean
+    isStaff boolean
 }
 
 Table employees {
@@ -32,3 +32,9 @@ Table employeeTickets {
     employeeId int
     serviceTicketId int
 }
+
+ref: users.id < customers.userId
+ref: users.id < employees.userId
+ref: users.id < serviceTickets.userId
+ref: serviceTickets.id < employeeTickets.serviceTicketId
+ref: employees.id < employeeId.id
