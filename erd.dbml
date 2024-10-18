@@ -37,4 +37,4 @@ ref: users.id < customers.userId
 ref: users.id < employees.userId
 ref: users.id < serviceTickets.userId
 ref: serviceTickets.id < employeeTickets.serviceTicketId
-ref: employees.id < employeeId.id
+ref: employees.id < employeeTickets.employeeId
