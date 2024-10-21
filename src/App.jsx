@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { getAllTickets } from "./services/ticketService.jsx"
-import "./App.css"
 
 export const App = () => {
 	const [allTickets, setAllTickets] = useState([])
