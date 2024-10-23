@@ -4,6 +4,7 @@ import { TicketList } from "./components/tickets/TicketList"
 import { EmployeeList } from "./components/employees/EmployeesList"
 import { Outlet, Route, Routes } from "react-router-dom"
 import { NavBar } from "./components/nav/NavBar"
+import { Welcome } from "./components/welcome/Welcome"
 
 export const App = () => {
 	return <Routes>
@@ -16,9 +17,13 @@ export const App = () => {
 				</>
 			}
 		>
+			<Route index element={<Welcome />} />
 			<Route path="tickets" element={<TicketList />} />
 			<Route path="employees" element={<EmployeeList />} />
-			<Route path="customers" element={<CustomerList />} />
+			<Route path="customers"  >
+				<Route index element={<CustomerList />} />
+				<Route path=":customerId" element={<>Customer Details</>} />
+			</Route>
 
 		</Route>
 	</Routes>
