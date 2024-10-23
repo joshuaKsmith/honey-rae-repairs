@@ -5,6 +5,7 @@ import { EmployeeList } from "./components/employees/EmployeesList"
 import { Outlet, Route, Routes } from "react-router-dom"
 import { NavBar } from "./components/nav/NavBar"
 import { Welcome } from "./components/welcome/Welcome"
+import { CustomerDetails } from "./components/customers/CustomerDetails"
 
 export const App = () => {
 	return <Routes>
@@ -22,7 +23,7 @@ export const App = () => {
 			<Route path="employees" element={<EmployeeList />} />
 			<Route path="customers"  >
 				<Route index element={<CustomerList />} />
-				<Route path=":customerId" element={<>Customer Details</>} />
+				<Route path=":customerId" element={<CustomerDetails />} /> {/* /customers/:customerId */}
 			</Route>
 
 		</Route>
