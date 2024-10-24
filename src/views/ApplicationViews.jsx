@@ -6,18 +6,18 @@ import { Welcome } from "../components/welcome/Welcome"
 import { EmployeeDetails } from "../components/employees/EmployeeDetails"
 import { CustomerList } from "../components/customers/customersList"
 import { CustomerDetails } from "../components/customers/CustomerDetails"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
 
-    // useEffect(() => {
-    //     const localHoneyUser = localStorage.getItem("honey_user")
-    //     const honeyUserObject = JSON.parse(localHoneyUser)
+    useEffect(() => {
+        const localHoneyUser = localStorage.getItem("honey_user")
+        const honeyUserObject = JSON.parse(localHoneyUser)
 
-    //     setCurrentUser(honeyUserObject)
-    // }, [])
+        setCurrentUser(honeyUserObject)
+    }, [])
 
     return (
         <Routes>
@@ -31,7 +31,10 @@ export const ApplicationViews = () => {
                 }
             >
                 <Route index element={<Welcome />} />
-                <Route path="tickets" element={<TicketList />} />
+                <Route 
+                    path="tickets"
+                    element={<TicketList currentUser={currentUser} />}
+                />
                 <Route path="employees" >
                     <Route index element={<EmployeeList />} />
                     <Route path=":employeeId" element={<EmployeeDetails />} /> {/* /employees/:employeeId */}

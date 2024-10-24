@@ -4,17 +4,20 @@ import "./Tickets.css"
 import { Ticket } from "./Ticket.jsx"
 import { TicketFilterBar } from "./TicketFilterBar.jsx"
 
-export const TicketList = () => {
+export const TicketList = ({ currentUser }) => {
 	const [allTickets, setAllTickets] = useState([])
 	const [showEmergencyOnly, setShowEmergencyOnly] = useState(false)
 	const [filteredTickets, setFilteredTickets] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
 
-	useEffect(() => {
-		getAllTickets().then(ticketsArray => {
+    const getAndSetTickets = () => {
+        getAllTickets().then(ticketsArray => {
 			setAllTickets(ticketsArray)
-			console.log("tickets set")
 		})
+    }
+
+	useEffect(() => {
+        getAndSetTickets()
 	}, []) // ONLY runs on initial render of component
 
 	useEffect(() => {
@@ -30,7 +33,7 @@ export const TicketList = () => {
 
     useEffect(() => {
         const foundTickets = allTickets.filter((ticket) => 
-            ticket.description.toLowerCase().includes(searchTerm.toLowerCase())
+            ticket.description?.toLowerCase().includes(searchTerm.toLowerCase())
         )
         setFilteredTickets(foundTickets)
     }, [searchTerm, allTickets])
@@ -41,7 +44,14 @@ export const TicketList = () => {
             <TicketFilterBar setShowEmergencyOnly={setShowEmergencyOnly} setSearchTerm={setSearchTerm}/>
 			<article className="tickets">
 				{filteredTickets.map((ticketObject) => {
-					return <Ticket ticket={ticketObject} key={ticketObject.id}/>
+					return (
+                        <Ticket 
+                            ticket={ticketObject} 
+                            key={ticketObject.id} 
+                            currentUser={currentUser}
+                            getAndSetTickets={getAndSetTickets}
+                        />
+                    )
 				})}
 			</article>
 		</div>
