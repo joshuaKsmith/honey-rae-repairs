@@ -12,12 +12,12 @@ import { useState } from "react"
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
 
-    useEffect(() => {
-        const localHoneyUser = localStorage.getItem("honey_user")
-        const honeyUserObject = JSON.parse(localHoneyUser)
+    // useEffect(() => {
+    //     const localHoneyUser = localStorage.getItem("honey_user")
+    //     const honeyUserObject = JSON.parse(localHoneyUser)
 
-        setCurrentUser(honeyUserObject)
-    }, [])
+    //     setCurrentUser(honeyUserObject)
+    // }, [])
 
     return (
         <Routes>
