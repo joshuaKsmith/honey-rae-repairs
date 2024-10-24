@@ -23,6 +23,7 @@ export const EmployeeForm = ({ currentUser }) => {
                         type="text"
                         required
                         className="form-control"
+                        value={employee.specialty}
                     />
                 </div>
             </fieldset>
@@ -33,6 +34,7 @@ export const EmployeeForm = ({ currentUser }) => {
                         type="number"
                         required
                         className="form-control"
+                        value={employee.rate}
                     />
                 </div>
             </fieldset>
