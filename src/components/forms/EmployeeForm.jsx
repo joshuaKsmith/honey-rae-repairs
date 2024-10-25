@@ -32,6 +32,12 @@ export const EmployeeForm = ({ currentUser }) => {
         })
     }
 
+    const handleInputChange = (event) => {
+        const stateCopy = { ...employee }
+        stateCopy[event.target.name] = event.target.value
+        setEmployee(stateCopy)
+    }
+
     return (
         <form className="profile">
             <h2>Update Profile</h2>
@@ -42,12 +48,9 @@ export const EmployeeForm = ({ currentUser }) => {
                         type="text"
                         required
                         className="form-control"
-                        value={employee.specialty}
-                        onChange={(event) => {
-                            const copy = { ...employee }
-                            copy.specialty = event.target.value
-                            setEmployee(copy)
-                        }}
+                        value={employee?.specialty ? employee.specialty : ""}
+                        name="specialty"
+                        onChange={handleInputChange}
                     />
                 </div>
             </fieldset>
@@ -58,18 +61,18 @@ export const EmployeeForm = ({ currentUser }) => {
                         type="number"
                         required
                         className="form-control"
-                        value={employee.rate}
-                        onChange={(event) => {
-                            const copy = { ...employee }
-                            copy.rate = event.target.value
-                            setEmployee(copy)
-                        }}
+                        value={employee?.rate ? employee.rate : 0}
+                        name="rate"
+                        onChange={handleInputChange}
                     />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <button className="form-btn btn-primary" onClick={handleSave}>Save Profile</button> 
+                    <button 
+                        className="form-btn btn-primary" 
+                        onClick={handleSave}
+                    >Save Profile</button> 
                 </div>
             </fieldset>
         </form>

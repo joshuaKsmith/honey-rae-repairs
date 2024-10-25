@@ -26,6 +26,7 @@ export const TicketFilterBar = ({ setShowEmergencyOnly, setSearchTerm }) => {
                 type="text"
                 placeholder="Search Tickets"
                 className="ticket-search"
+                name="ticket-search"
             />
         </div>
     )
