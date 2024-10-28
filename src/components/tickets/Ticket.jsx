@@ -33,7 +33,6 @@ export const Ticket = ({ ticket, currentUser, getAndSetTickets }) => {
     }
 
     const handleClose = () => {
-        debugger
         const closedTicket = {
             id: ticket.id,
             userId: ticket.userId,
